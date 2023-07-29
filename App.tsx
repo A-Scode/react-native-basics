@@ -6,70 +6,45 @@
  */
 
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text, 
-  View,
-} from 'react-native';
-import codeImage from "./assets/images/7112.jpg"
+import CoreComponents from './screens/CoreComponents';
+import { DefaultTheme, NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useColorScheme } from 'react-native';
+import AdvanceCoreComponets from './screens/AdvanceCoreComponets';
+
+
+
+const Stack = createStackNavigator();
+
+
+const navigatorDarkTheme = {
+  dark : true ,
+  colors : {
+    background : "black",
+  }
+}
+const navigatorLightTheme = {
+  dark : true ,
+  colors : {
+    background : "white",
+  }
+}
 
 
 function App(): JSX.Element {
+  const dark = useColorScheme() === "dark";
   return (
-    <ScrollView scrollEnabled overScrollMode='always' contentContainerStyle={{...styles.containerStyle , alignItems : "" , borderColor:"yellow" , flex : 0}}>
-    <View  style = {styles.containerStyle}>
-      <Text style ={styles.textStyle} >
-        Core Componnents💻
-      </Text>
-      <View style={styles.components} >
-        <Text>This green bordered box is View component</Text>
-        <Text>Below is an Image component</Text>
-        <ScrollView scrollEnabled style = {styles.imageScrollView}
-        StickyHeaderComponent={()=><Text>hello</Text>}
-        horizontal
+    <NavigationContainer theme={dark ? navigatorDarkTheme : navigatorLightTheme} >
+      <Stack.Navigator screenOptions={{headerMode : "screen"}}>
+        <Stack.Screen name="Core Components" component={CoreComponents} />
+        <Stack.Screen name="Advance Core Components" component={AdvanceCoreComponets} />
         
-        >
-          <Image style={styles.imageStyle} source={codeImage}  / >
-        </ScrollView>
-        
-      </View>
-    </View>
-    </ScrollView>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  containerStyle :{
-    flex:1 ,
-    borderWidth : 2 ,
-    borderColor: "red",
-    justifyContent : "flex-start" ,
-    gap : 20 ,
-    alignItems :"center",
-    padding : 10 ,
-  },
-  textStyle : {
-    fontSize : 25,
-    
-  },
-  components:{
-    alignSelf : 'baseline',
-    borderWidth : 2 ,
-    borderColor : "green",
-    padding : 10 ,
-    gap : 20,
-  },
-  imageStyle :{
-    flex : 1,
-  },
-  imageScrollView:{
-    height : 500,
-    overflow : "scroll",
-    
-  }
-})
 
 
 export default App;
