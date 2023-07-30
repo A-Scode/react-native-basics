@@ -17,9 +17,12 @@ jobs :
 
             - name : directory
               run : "cd android"
+              
+            - name : ls
+              run : ls
             
             - name : make_excutable
-              run : chmod +x ./gradlew
+              run : chmod +x gradlew
             
             - name : test with graddle
               run :  ./gradlew test
