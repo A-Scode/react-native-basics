@@ -7,6 +7,9 @@ jobs :
     
     build_android :
         runs-on : ubuntu-latest
+        defaults : 
+            run : 
+                working-directory : android
         steps : 
             - uses: actions/checkout@v3
             
@@ -15,20 +18,20 @@ jobs :
                 distribution : zulu
                 java-version: '11'
 
-            - name : directory
-              run : "cd android"
+#             - name : install deps
+#               run : npm i
               
             - name : ls
               run : ls
             
             - name : make_excutable
-              run : chmod +x android/gradlew
+              run : chmod +x ./gradlew
               
             - name : gradle initialize
-              run : android/gradlew init
+              run : ./gradlew init
               
             - name : gradle project
-              run : android/gradlew build
+              run : ./gradlew build
             
             - name : build with graddle
-              run :  android/gradlew clean && android/gradlew assemble
+              run :  ./gradlew clean && ./gradlew assemble
