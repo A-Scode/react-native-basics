@@ -18,8 +18,8 @@ jobs :
             - name : directory
               run : "cd android"
             
-            # - name : make_excutable
-            #   run : chmod +x ./gradlew
+            - name : make_excutable
+              run : gradle init
             
             - name : build_release apk
               run :  gradle assembleRelease
