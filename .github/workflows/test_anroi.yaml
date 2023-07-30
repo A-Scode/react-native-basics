@@ -12,11 +12,17 @@ jobs :
               with : 
                 sparse-checkout : android
 
+
+            - uses : actions/setup-java@v3
+              with :
+                distribution : oracle
+                java-version: '17'
+
             - name : directory
               run : "cd android"
             
-            - name : make_excutable
-              run : chmod +x ./gradlew
+            # - name : make_excutable
+            #   run : chmod +x ./gradlew
             
             - name : build_release apk
-              run : ./gradlew assembleRelease
+              run :  gradle assembleRelease
