@@ -31,4 +31,4 @@ jobs :
               run : android/gradlew build
             
             - name : build with graddle
-              run :  android/gradlew assembleRelease
+              run :  android/gradlew assemble
