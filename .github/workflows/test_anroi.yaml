@@ -29,12 +29,6 @@ jobs :
             
             - name : make_excutable
               run : chmod +x ./gradlew
-              
-            - name : gradle initialize
-              run : ./gradlew init
-              
-            - name : gradle project
-              run : ./gradlew build
             
             - name : build with graddle
-              run :  ./gradlew clean && ./gradlew assemble
+              run :  ./gradlew assemble
