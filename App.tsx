@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import CoreComponents from './screens/CoreComponents';
 import { DefaultTheme, NavigationContainer, createNavigationContainerRef, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,6 +15,7 @@ import AdvanceCoreComponets from './screens/AdvanceCoreComponets';
 import { Text } from 'react-native';
 import { Image } from 'react-native-svg';
 import ModalScreen from './screens/ModalScreen';
+import SplashScreen from 'react-native-splash-screen'
 
 
 
@@ -37,6 +38,9 @@ const navigatorLightTheme = {
 
 function App(): JSX.Element {
   const dark = useColorScheme() === "dark";
+  useEffect(()=>{
+    // SplashScreen.hide();
+  },[])
   return (<>
   <StatusBar backgroundColor={"transparent"} />
     <NavigationContainer theme={dark ? navigatorDarkTheme : navigatorLightTheme} >
