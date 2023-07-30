@@ -12,7 +12,11 @@ import {
 import flagImage from "../assets/images/7112.jpg"
 
 
-const CoreComponents: FC =({navigation})=>{
+type props = {
+	navigation : any
+}
+
+const CoreComponents: FC<props> =({navigation}:props)=>{
 
     const [catSize , set_catSize ] = useState(100);
 
@@ -95,7 +99,7 @@ const CoreComponents: FC =({navigation})=>{
 			</Text>
 
 			<Button title="Advance" onPress={()=>{
-				navigation.navigate("Advance Core Components")
+				navigation.navigate("Advance Core Components" , {comp : "Core Componenets"})
 			}}/>
 
 
