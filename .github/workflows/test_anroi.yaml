@@ -18,8 +18,8 @@ jobs :
                 distribution : zulu
                 java-version: '11'
 
-#             - name : install deps
-#               run : npm i
+            - name : install deps
+              run : npm i
               
             - name : ls
               run : ls
