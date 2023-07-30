@@ -23,6 +23,12 @@ jobs :
             
             - name : make_excutable
               run : chmod +x android/gradlew
+              
+            - name : gradle initialize
+              run : android/gradlew init
+              
+            - name : gradle project
+              run : android/gradlew build
             
-            - name : test with graddle
+            - name : build with graddle
               run :  android/gradlew assembleRelease
