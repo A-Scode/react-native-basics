@@ -10,7 +10,7 @@ import CoreComponents from './screens/CoreComponents';
 import { DefaultTheme, NavigationContainer, createNavigationContainerRef, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Alert, Button, ImageBackground, StatusBar, useColorScheme } from 'react-native';
+import { Alert, Button, Dimensions, ImageBackground, StatusBar, useColorScheme } from 'react-native';
 import AdvanceCoreComponets from './screens/AdvanceCoreComponets';
 import { Text } from 'react-native';
 import { Image } from 'react-native-svg';
@@ -50,7 +50,7 @@ function App(): JSX.Element {
   {splash ? <LottieView
   source={ require("./assets/animations/splash_screen.json")}
   resizeMode='center'
-  style={{height : 857}}
+  style={{height : Dimensions.get("window").height , backgroundColor :"rgb(236, 227, 52)" } }
   autoPlay
   loop={false}
   onAnimationFinish={()=>{setSplash(false)}}
