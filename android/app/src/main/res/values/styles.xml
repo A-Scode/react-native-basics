@@ -5,8 +5,5 @@
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
-    <style name="SpalshTheme" parent="AppTheme" >
-        <item name="android:windowBackground">@drawable/launch_screen</item>
-    </style>
 
 </resources>
