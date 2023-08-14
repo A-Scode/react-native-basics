@@ -5,17 +5,18 @@
  * @format
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CoreComponents from './screens/CoreComponents';
 import { DefaultTheme, NavigationContainer, createNavigationContainerRef, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Alert, Button, ImageBackground, StatusBar, useColorScheme } from 'react-native';
+import { Alert, Button, Dimensions, ImageBackground, StatusBar, useColorScheme } from 'react-native';
 import AdvanceCoreComponets from './screens/AdvanceCoreComponets';
 import { Text } from 'react-native';
 import { Image } from 'react-native-svg';
 import ModalScreen from './screens/ModalScreen';
 import SplashScreen from 'react-native-splash-screen'
+import LottieView from 'lottie-react-native';
 
 
 
@@ -38,11 +39,23 @@ const navigatorLightTheme = {
 
 function App(): JSX.Element {
   const dark = useColorScheme() === "dark";
+
+
+  const [splash , setSplash] = useState(true);
+
   useEffect(()=>{
     // SplashScreen.hide();
   },[])
   return (<>
-  <StatusBar backgroundColor={"transparent"} />
+  {splash ? <LottieView
+  source={ require("./assets/animations/splash_screen.json")}
+  resizeMode='center'
+  style={{height : Dimensions.get("window").height , backgroundColor :"rgb(236, 227, 52)" } }
+  autoPlay
+  loop={false}
+  onAnimationFinish={()=>{setSplash(false)}}
+  />:<>
+    <StatusBar backgroundColor={"transparent"} />
     <NavigationContainer theme={dark ? navigatorDarkTheme : navigatorLightTheme} >
       <Stack.Navigator screenOptions={(props)=>({
         headerMode : "screen" ,
@@ -75,6 +88,8 @@ function App(): JSX.Element {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </>
+    }
     </>
   );
 }
