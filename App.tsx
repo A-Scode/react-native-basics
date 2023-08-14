@@ -46,9 +46,9 @@ function App(): JSX.Element {
     <NavigationContainer theme={dark ? navigatorDarkTheme : navigatorLightTheme} >
       <Stack.Navigator screenOptions={(props)=>({
         headerMode : "screen" ,
-        headerRight : props=>(<Button
-          title="Exit"
-          onPress={()=>Alert.alert("Exit" , "Sure to Exit" , [{text:"ok", onPress:()=>{} }, {text:"Cancel" , onPress:()=>(null)}]  )}
+        headerRight : ()=>(<Button
+          title="Go Back"
+          onPress={()=>Alert.alert("Exit" , "Sure to Go Back" , [{text:"ok", onPress:()=>props.navigation.goBack() }, {text:"Cancel" , onPress:()=>(null)}]  )}
           />),
         headerLeft : ()=>(<Button
           title="Modal"
