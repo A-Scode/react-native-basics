@@ -23,12 +23,12 @@ jobs :
 
             - name : install deps
               run : npm i
-              
-            - name : ls
-              run : ls
             
             - name : make_excutable
               run : chmod +x ./gradlew
             
             - name : build with graddle
               run :  ./gradlew assemble
+
+            - name : Build Success
+              run : echo "✅ Build Successfull"
