@@ -17,6 +17,7 @@ import { Image } from 'react-native-svg';
 import ModalScreen from './screens/ModalScreen';
 import SplashScreen from 'react-native-splash-screen'
 import LottieView from 'lottie-react-native';
+import BasicAnimations from './screens/BasicAnimations';
 
 
 
@@ -47,50 +48,77 @@ function App(): JSX.Element {
   useEffect(()=>{
     // SplashScreen.hide();
   },[])
-  return (<>
-  {splash ? <LottieView
-  source={ require("./assets/animations/splash_screen.json")}
-  resizeMode='center'
-  style={{height : Dimensions.get("window").height , backgroundColor :"rgb(236, 227, 52)" } }
-  autoPlay
-  loop={false}
-  onAnimationFinish={()=>{setSplash(false)}}
-  />:<>
-    <StatusBar backgroundColor={"transparent"} />
-    <NavigationContainer theme={dark ? navigatorDarkTheme : navigatorLightTheme} >
-      <Stack.Navigator screenOptions={(props)=>({
-        headerMode : "screen" ,
-        headerRight : ()=>(<Button
-          title="Go Back"
-          onPress={()=>Alert.alert("Exit" , "Sure to Go Back" , [{text:"ok", onPress:()=>props.navigation.goBack() }, {text:"Cancel" , onPress:()=>(null)}]  )}
-          />),
-        headerLeft : ()=>(<Button
-          title="Modal"
-          onPress={()=>{
-            
-             props.navigation.navigate("Modal")} }
-          />),
-    
-    
-    })}  >
-        <Stack.Screen name="Core Components" component={CoreComponents} options={{headerTitle:(props)=>(<Text>Home Page</Text>),
-      headerTitleAlign : "center",
-      headerTitleAllowFontScaling : true ,
-      }}  />
-        <Stack.Screen name="Advance Core Components" component={AdvanceCoreComponets} initialParams={{ comp : "App"}} />
-        
+  return (
+    <>
+      {splash ? (
+        <LottieView
+          source={require('./assets/animations/splash_screen.json')}
+          resizeMode="center"
+          style={{
+            height: Dimensions.get('window').height,
+            backgroundColor: 'rgb(236, 227, 52)',
+          }}
+          autoPlay
+          loop={false}
+          onAnimationFinish={() => {
+            setSplash(false);
+          }}
+        />
+      ) : (
+        <>
+          <StatusBar backgroundColor={'transparent'} />
+          <NavigationContainer
+            theme={dark ? navigatorDarkTheme : navigatorLightTheme}>
+            <Stack.Navigator
+              screenOptions={props => ({
+                headerMode: 'screen',
+                headerRight: () => (
+                  <Button
+                    title="Go Back"
+                    onPress={() =>
+                      Alert.alert('Exit', 'Sure to Go Back', [
+                        {text: 'ok', onPress: () => props.navigation.goBack()},
+                        {text: 'Cancel', onPress: () => null},
+                      ])
+                    }
+                  />
+                ),
+                headerLeft: () => (
+                  <Button
+                    title="Modal"
+                    onPress={() => {
+                      props.navigation.navigate('Modal');
+                    }}
+                  />
+                ),
+              })}>
+              <Stack.Screen
+                name="Core Components"
+                component={CoreComponents}
+                options={{
+                  headerTitle: props => <Text>Home Page</Text>,
+                  headerTitleAlign: 'center',
+                  headerTitleAllowFontScaling: true,
+                }}
+              />
+              <Stack.Screen
+                name="Advance Core Components"
+                component={AdvanceCoreComponets}
+                initialParams={{comp: 'App'}}
+              />
+              <Stack.Screen
+                name="Basic Animations"
+                component={BasicAnimations}
+                initialParams={{comp: 'App'}}
+              />
 
-
-      <Stack.Group screenOptions={{presentation:"modal"}}>
-        <Stack.Screen name='Modal' component={ModalScreen}  />
-      </Stack.Group>
-
-
-
-      </Stack.Navigator>
-    </NavigationContainer>
-    </>
-    }
+              <Stack.Group screenOptions={{presentation: 'modal'}}>
+                <Stack.Screen name="Modal" component={ModalScreen} />
+              </Stack.Group>
+            </Stack.Navigator>
+          </NavigationContainer>
+        </>
+      )}
     </>
   );
 }

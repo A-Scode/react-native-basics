@@ -47,15 +47,24 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
                 height: 200,
               }}
               StickyHeaderComponent={() => <Text>hello</Text>}>
-              <Image style={styles.imageStyle} source={require("../assets/images/7112.jpg")} />
+              <Image
+                style={styles.imageStyle}
+                source={require('../assets/images/7112.jpg')}
+              />
               {/* <CodeImage /> */}
             </ScrollView>
 
             <TextInput
-              style={[styles.textInputStyle , styles.shadowProps , styles.elevationProps]}
+              style={[
+                styles.textInputStyle,
+                styles.shadowProps,
+                styles.elevationProps,
+              ]}
               placeholder="somePlaceholder"
-			  onChangeText={(data)=>{setText(data)}}
-			  value={text}
+              onChangeText={data => {
+                setText(data);
+              }}
+              value={text}
             />
 
             <Text> Below is image with uri🕸 -</Text>
@@ -88,21 +97,29 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
               disabled={catSize < 50}
             />
 
-			<Text style={{fontSize : 30}}>
-				{
-					text
-					.split(" ")
-					.map(word=>"🥞")
-					.join(" ")
-				}
-			</Text>
+            <Text style={{fontSize: 30}}>
+              {text
+                .split(' ')
+                .map(word => '🥞')
+                .join(' ')}
+            </Text>
 
-			<Button title="Advance" onPress={()=>{
-				navigation.navigate("Advance Core Components" , {comp : "Core Componenets"})
-			}}/>
-
-
-
+            <Button
+              title="Advance"
+              onPress={() => {
+                navigation.navigate('Advance Core Components', {
+                  comp: 'Core Componenets',
+                });
+              }}
+            />
+            <Button
+              title="Basic Animations"
+              onPress={() => {
+                navigation.navigate('Basic Animations', {
+                  comp: 'Basic Animations',
+                });
+              }}
+            />
           </View>
         </View>
       </ScrollView>
