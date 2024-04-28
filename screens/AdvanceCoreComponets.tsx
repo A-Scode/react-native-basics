@@ -1,6 +1,6 @@
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { NavigationAction, NavigationProp, NavigationState, useNavigation, useRoute } from "@react-navigation/native";
+import { NavigationAction, NavigationProp, NavigationState, ParamListBase, useNavigation, useRoute } from "@react-navigation/native";
 import { FC } from "react";
 import { Button, View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -10,7 +10,7 @@ type props ={
     navigation : any
 }
 
-const AdvanceCoreComponets:FC<props> = ()=> {
+const AdvanceCoreComponets: FC<ParamListBase> = ()=> {
 
     const navigation:any  = useNavigation();
     const route = useRoute();
@@ -81,5 +81,3 @@ const styles = StyleSheet.create({
         fontWeight : "500" ,
     }
 })
-
-export default AdvanceCoreComponets;

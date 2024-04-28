@@ -7,7 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import CoreComponents from './screens/CoreComponents';
-import { DefaultTheme, NavigationContainer, createNavigationContainerRef, useNavigation } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer, Theme, createNavigationContainerRef, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Alert, Button, Dimensions, ImageBackground, StatusBar, useColorScheme } from 'react-native';
@@ -22,16 +22,17 @@ import LottieView from 'lottie-react-native';
 
 const Stack = createStackNavigator();
 
-
-const navigatorDarkTheme = {
+const navigatorDarkTheme:Theme = {
   dark : true ,
   colors : {
+    ... DefaultTheme.colors,
     background : "#2a2a2a",
   }
 }
 const navigatorLightTheme = {
   dark : true ,
   colors : {
+    ... DefaultTheme.colors,
     background : "white",
   }
 }

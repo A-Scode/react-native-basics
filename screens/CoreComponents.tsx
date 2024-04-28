@@ -9,7 +9,6 @@ import {
     TextInput, 
     View,
 } from 'react-native';
-import flagImage from "../assets/images/7112.jpg"
 
 
 type props = {
@@ -30,7 +29,7 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
         overScrollMode="always"
         contentContainerStyle={{
           ...styles.containerStyle,
-          alignItems: '',
+          // alignItems: '',
           borderColor: 'yellow',
           flex: 0,
         }}>
@@ -48,7 +47,7 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
                 height: 200,
               }}
               StickyHeaderComponent={() => <Text>hello</Text>}>
-              <Image style={styles.imageStyle} source={flagImage} />
+              <Image style={styles.imageStyle} source={require("../assets/images/7112.jpg")} />
               {/* <CodeImage /> */}
             </ScrollView>
 
