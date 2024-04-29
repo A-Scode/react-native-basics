@@ -119,7 +119,7 @@ const BasicAnimations = () => {
     const textAnim = Animated.sequence([
         Animated.timing(textScale , {
             toValue : 3,
-            duration : 3000,
+            duration : 2000,
             easing : Easing.cubic,
             useNativeDriver : false,
         }),

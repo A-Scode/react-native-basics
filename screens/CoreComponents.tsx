@@ -1,6 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState  ,useRef, useCallback } from "react";
 import {
     Alert,
+    Animated,
     Button,
     Image,
     ScrollView,
@@ -17,7 +18,16 @@ type props = {
 
 const CoreComponents: FC<props> =({navigation}:props)=>{
 
-    const [catSize , set_catSize ] = useState(100);
+    const catSize  = useRef(new Animated.Value(100)).current;
+    const [sizeValue , setSizeValue]  = useState(100);
+
+    const set_catSize = useCallback((value) =>{
+      Animated.spring(catSize , {
+        toValue : value ,
+        useNativeDriver : false,
+      }).start()
+      setSizeValue(value);
+    } , [catSize])
 
 	const [text , setText ] = useState("This is default value");
 
@@ -68,7 +78,7 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
             />
 
             <Text> Below is image with uri🕸 -</Text>
-            <Image
+             < Animated.Image
               source={{
                 uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
               }}
@@ -81,20 +91,20 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
             <Button
               title="Grow Cat"
               onPress={() => {
-                if (catSize >= 300)
+                if (sizeValue >= 300)
                   Alert.alert('Max Cat Size Reached', "Can't grow cat anymore");
-                set_catSize(catSize + 25);
+                set_catSize(sizeValue + 25);
               }}
-              disabled={catSize > 300}
+              disabled={sizeValue > 300}
             />
             <Button
               title="Shrink Cat"
               onPress={() => {
-                if (catSize <= 50)
+                if (sizeValue <= 50)
                   Alert.alert('Max Cat Size Reached', "Can't grow cat anymore");
-                set_catSize(catSize - 25);
+                set_catSize(sizeValue - 25);
               }}
-              disabled={catSize < 50}
+              disabled={sizeValue < 50}
             />
 
             <Text style={{fontSize: 30}}>
