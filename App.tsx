@@ -18,6 +18,7 @@ import ModalScreen from './screens/ModalScreen';
 import SplashScreen from 'react-native-splash-screen'
 import LottieView from 'lottie-react-native';
 import BasicAnimations from './screens/BasicAnimations';
+import ReanimatedAnimations from './screens/ReanimatedAnimations';
 
 
 
@@ -109,6 +110,11 @@ function App(): JSX.Element {
               <Stack.Screen
                 name="Basic Animations"
                 component={BasicAnimations}
+                initialParams={{comp: 'App'}}
+              />
+              <Stack.Screen
+                name="Reanimated Animations"
+                component={ReanimatedAnimations}
                 initialParams={{comp: 'App'}}
               />
 

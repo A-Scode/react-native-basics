@@ -130,6 +130,14 @@ const CoreComponents: FC<props> =({navigation}:props)=>{
                 });
               }}
             />
+            <Button
+              title="Reanimated Animations"
+              onPress={() => {
+                navigation.navigate('Reanimated Animations', {
+                  comp: 'Reanimated Animations',
+                });
+              }}
+            />
           </View>
         </View>
       </ScrollView>
